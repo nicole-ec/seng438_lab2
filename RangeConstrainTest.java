@@ -50,7 +50,7 @@ public class RangeConstrainTest {
 	//not need to test it.
 //	@Test
 //	public void inputedIsNaN() {
-//		double expected=-1;
+//		double expected=Double.NaN;
 //		double actual=exampleRange.constrain(Double.NaN);
 //		System.out.println(actual);
 //		
