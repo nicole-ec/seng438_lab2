@@ -64,6 +64,4 @@ public class RangeExpandTest {
 		output = new Range(2, 6);
 		assertEquals(Range.expand(range, 0, 0), output);
 	}
-	
-
 }
