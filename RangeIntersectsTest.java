@@ -97,9 +97,7 @@ public class RangeIntersectsTest {
 	public void lowerIsGreaterThanHigher() {
 		
 		boolean result = example.intersects(4, 3);
-		
-		fail("should catch that lower is greater than upper bound.");
-		
+				
 	}
 	
 	

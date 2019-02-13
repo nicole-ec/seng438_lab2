@@ -15,6 +15,7 @@ public class DataUtilitiesTestCreate2DArray {
 			{4.0,8.0,12.0,16.0}
 	};
 	
+	
 	private Number [][] numarr1 = {}, numarr2 = {
 			{2.0,4.0,6.0,8.0},
 			{3.0,6.0,9.0,12.0},
@@ -26,9 +27,12 @@ public class DataUtilitiesTestCreate2DArray {
 	 */
 	@Test (expected = InvalidParameterException.class)
 	public void nullTest() {
-		
+		try {
 			numarr1 = DataUtilities.createNumberArray2D(null);
-			fail("Null is not premitted!");
+		} catch(InvalidParameterException ex) {
+			throw ex;
+		} catch(Exception ex) {
+		}
 	}
 
 	/**

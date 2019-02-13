@@ -67,7 +67,12 @@ public class DataUtilitiesGetCumulativePercentagesTest {
 	 */
 	@Test(expected = InvalidParameterException.class)
 	public void nullValues() {
+		try {
 		getCumulativePercentages(null);
+		} catch(InvalidParameterException ex) {
+			throw ex;
+		} catch(Exception ex) {
+		}
 	}
 	
 	/**

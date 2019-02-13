@@ -17,8 +17,12 @@ public class RangeExpandTest {
 	 */
 	@Test (expected = InvalidParameterException.class)
 	public void nullRangeTest() {
+		try {
 			Range.expand(null, 0.25, 0.50);
-			fail("Null not permitted");
+		} catch(InvalidParameterException ex) {
+			throw ex;
+		} catch(Exception ex) {
+		}
 	}
 	
 	/**

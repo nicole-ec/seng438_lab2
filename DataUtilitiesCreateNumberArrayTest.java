@@ -14,8 +14,12 @@ public class DataUtilitiesCreateNumberArrayTest {
 	 */
 	@Test (expected = InvalidParameterException.class)
 	public void nullArray() {
+		try {
 		DataUtilities.createNumberArray(null);
-		fail("This test should catch InvalidParameterException.");	//If correct exception is caught, fail won't execute
+		} catch(InvalidParameterException ex) {
+			throw ex;
+		} catch(Exception ex) {
+		}
 	}
 	
 	/**

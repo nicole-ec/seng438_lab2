@@ -29,10 +29,12 @@ public class DataUtilitiesCalculateRow {
 	 */
 	@Test (expected = InvalidParameterException.class)
 	public void nullTable(){
+		try {
 		double result = DataUtilities.calculateRowTotal(null, 0);
-		
-		//if the exception is thrown, fail() should not execute.
-		fail("This test should catch InvalidParameterException.");
+	} catch(InvalidParameterException ex) {
+		throw ex;
+	} catch(Exception ex) {
+	}
 	}
 	
 	/**
