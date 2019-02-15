@@ -133,6 +133,7 @@ public List<DynamicTest> fullValues() {
 
 /**
  * tests if an exception is thrown when you have a null as one of the values*/
+@Test
 public void nullValueWithinInputedKeyedValues() {	
 	List<String> keys= Arrays.asList("key0","key1");
 	List<Double> doubleValues=Arrays.asList(null,1.0);
@@ -157,7 +158,7 @@ public void negativeValue() {
 }
 /**tests if an InvalidParameterException is thrown when a cumulative value >1 is forced by 
  * having a negative value  in the KeyedValues*/
-
+@Test
 public void outOfCumulativeRange() {	
 	List<String> keys= Arrays.asList("key0","key1");
 	List<Double> doubleValues=Arrays.asList(2.0,-1.0);
