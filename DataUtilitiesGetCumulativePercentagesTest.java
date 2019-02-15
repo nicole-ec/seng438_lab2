@@ -116,7 +116,7 @@ public void fullValues() {
 	
 	List<String> fullKeyedKeys= Arrays.asList("key1","key2","key3","key4","key5");
 	List<Double> fullKeyedDoubleValues=Arrays.asList(1.0,2.0,3.0,4.0,5.0);
-	List<Double> fullKeyedExpectedValues=Arrays.asList(.066666666667,.13333333334,.2,.2666666666,.3333333334);
+	List<Double> fullKeyedExpectedValues=Arrays.asList(.066666666667,.2,.4,.6666666666,1.0);
 
 	
 		KeyedValues values=createMockery(fullKeyedKeys, fullKeyedDoubleValues);
@@ -132,5 +132,38 @@ public void fullValues() {
 		}
 	}
 
+
+/**
+ * tests if an exception is thrown when you have a null as one of the values*/
+@Test(expected = InvalidParameterException.class)
+public void nullValueWithinInputedKeyedValues() {	
+	List<String> keys= Arrays.asList("key0","key1");
+	List<Double> doubleValues=Arrays.asList(null,1.0);
+	KeyedValues mock=createMockery(keys, doubleValues);
+	KeyedValues output= getCumulativePercentages(mock);
 }
 
+@Test
+public void negativeValue() {	
+	List<String> keys= Arrays.asList("key0");
+	List<Double> doubleValues=Arrays.asList(-1.0);
+
+	
+	KeyedValues mock=createMockery(keys, doubleValues);
+	KeyedValues output= getCumulativePercentages(mock);
+	double expected=1.0;
+	double actual=output.getIndex(0);
+	assertEquals("list with negative value should still calculate as portion",expected, actual,.000000001d);
+}
+/**tests if an InvalidParameterException is thrown when a cumulative value >1 is forced by 
+ * having a negative value  in the KeyedValues*/
+@Test(expected = InvalidParameterException.class)
+public void outOfCumulativeRange() {	
+	List<String> keys= Arrays.asList("key0","key1");
+	List<Double> doubleValues=Arrays.asList(2.0,-1.0);
+	
+	KeyedValues mock=createMockery(keys, doubleValues);
+	KeyedValues output= getCumulativePercentages(mock);
+}
+
+}

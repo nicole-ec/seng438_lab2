@@ -129,4 +129,40 @@ public List<DynamicTest> fullValues() {
 		}
 		return tests;
 	}
+
+
+/**
+ * tests if an exception is thrown when you have a null as one of the values*/
+public void nullValueWithinInputedKeyedValues() {	
+	List<String> keys= Arrays.asList("key0","key1");
+	List<Double> doubleValues=Arrays.asList(null,1.0);
+	KeyedValues mock=createMockery(keys, doubleValues);
+	
+	
+	assertThrows(InvalidParameterException.class,()->{KeyedValues output= getCumulativePercentages(mock);});
+
+}
+
+@Test
+public void negativeValue() {	
+	List<String> keys= Arrays.asList("key0");
+	List<Double> doubleValues=Arrays.asList(-1.0);
+
+	
+	KeyedValues mock=createMockery(keys, doubleValues);
+	KeyedValues output= getCumulativePercentages(mock);
+	double expected=1.0;
+	double actual=output.getIndex(0);
+	assertEquals("list with negative value should still calculate as portion",expected, actual,.000000001d);
+}
+/**tests if an InvalidParameterException is thrown when a cumulative value >1 is forced by 
+ * having a negative value  in the KeyedValues*/
+
+public void outOfCumulativeRange() {	
+	List<String> keys= Arrays.asList("key0","key1");
+	List<Double> doubleValues=Arrays.asList(2.0,-1.0);
+	
+	KeyedValues mock=createMockery(keys, doubleValues);
+	assertThrows(InvalidParameterException.class,()->{KeyedValues output= getCumulativePercentages(mock);});
+}
 }
