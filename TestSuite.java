@@ -8,7 +8,8 @@ import org.junit.runner.notification.Failure;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ DataUtilitiesCalculateColumn.class, 
+@Suite.SuiteClasses({ 
+	DataUtilitiesCalculateColumn.class, 
 	DataUtilitiesCalculateRow.class,
 	DataUtilitiesCreateNumberArrayTest.class,
 	DataUtilitiesGetCumulativePercentagesTest.class,
@@ -18,6 +19,11 @@ import org.junit.runners.Suite;
 	RangeExpandTest.class,
 	RangeIntersectsTest.class,
 	RangeShiftTest.class,
+	RangeExpandToIncludeTest.class,
+	RangeCombineTest.class,
+	RangeGetCentralValueTest.class,
+	RangeHashCodeTest.class,
+	RangeShiftWithZeroCrossingTest.class,
 	})
 
 public class TestSuite {

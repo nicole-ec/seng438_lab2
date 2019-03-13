@@ -2,6 +2,8 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 
+import java.security.InvalidParameterException;
+
 import org.jfree.data.Range;
 import org.junit.After;
 import org.junit.Before;
@@ -48,14 +50,14 @@ public class RangeConstrainTest {
 
 	//we originally had a test for not a number, but we decided that because it has no mention in the requirements, we did
 	//not need to test it.
-//	@Test
-//	public void inputedIsNaN() {
-//		double expected=Double.NaN;
-//		double actual=exampleRange.constrain(Double.NaN);
-//		System.out.println(actual);
-//		
-//		assertEquals("When constrained input is less than range, the output must be -1", expected,actual, .000000001d);
-//	}
+	@Test (expected = InvalidParameterException.class)
+	public void inputedIsNaN() {
+		double expected=Double.NaN;
+		double actual=exampleRange.constrain(Double.NaN);
+		//System.out.println(actual);
+		
+		assertEquals("When constrained input is less than range, the output must be -1", expected,actual, .000000001d);
+	}
 	
 	@After
 	public void tearDown() throws Exception {
